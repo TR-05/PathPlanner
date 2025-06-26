@@ -1,0 +1,102 @@
+:root {
+  --main-accent: #aaff03;
+  --main-primary: #1f1f1f;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Inter:wght@700&display=swap');
+
+@font-face {
+  font-family: 'Valorant';
+  src: url('ValorantFont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Valorant', monospace;
+  text-align: center;
+  margin: 0;
+  padding: 1vh 2vw;
+  background-color: var(--main-primary);
+  color: var(--main-accent);
+  height: 100vh;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+h1 {
+  color: var(--main-accent);
+  font-size: clamp(1em, 2vw, 2em); /* Responsive with min and max limits */
+  margin: 0vh 0;
+  font-weight: 300;
+}
+p {
+  color: var(--main-accent);
+  font-size: clamp(1em, 2.5vw, 1.5em); /* Responsive with min and max limits */
+  margin: 1vh 0;
+}
+img {
+  display: none; /* Hide the original img since we'll use canvas */
+}
+canvas {
+  border: 1px solid #0e0e0e;
+  box-sizing: border-box;
+  cursor: crosshair;
+  margin: 2vh 0;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+.canvas-container {
+  position: relative;
+  display: inline-block;
+}
+
+#coordinates {
+  position: absolute;
+  top: 96.5%;
+  left: 0;
+  font-family: 'Valorant', monospace;
+  font-size: clamp(1em, 2.5vw, 1.5em); /* Same responsive sizing as paragraphs */
+  margin: 0;
+  color: var(--main-accent);
+  white-space: nowrap;
+}
+#coordinates .coord-numbers {
+  font-family: 'Arial', Arial, sans-serif, monospace;
+  font-weight: bold;
+  letter-spacing: 0.03em;
+}
+.controls {
+  margin: 2vh 0;
+}
+button {
+  margin: 0 1vw;
+  padding: 1vh 2vw;
+  font-size: clamp(0.8em, 2vw, 1em);
+  font-family: 'Inter', 'Roboto', monospace;
+  background-color: var(--main-primary);
+  color: var(--main-accent);
+  border: 2px solid var(--main-accent);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+button:hover {
+  background-color: var(--main-accent);
+  color: var(--main-primary);
+}
+@media (max-width: 600px) {
+  h1 { font-size: 8vw; }
+  p { font-size: 4vw; }
+  img { width: 80vw; }
+  button { padding: 2vh 3vw; }
+}
+
+/* For very large screens */
+@media (min-width: 1920px) {
+  h1 { font-size: 2em; }
+  p { font-size: 1.5em; }
+  img { width: 800px; }
+}
