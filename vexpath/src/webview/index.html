@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>TNTN Path Planner</title>
+  <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <!-- STYLE_PLACEHOLDER -->
+</head>
+<body>
+  <h1>TNTN Path Planner</h1>
+  
+  <div class="canvas-container">
+    <canvas id="pathCanvas" width="2000" height="2000"></canvas>
+    <img id="backgroundImage" src="<!-- IMAGE_PLACEHOLDER -->" alt="VURC Push Back Field" style="display: none;">
+    <div id="coordinates">
+      Coordinates: (0, 0)
+    </div>
+  </div>
+  
+  <div class="controls">
+    <button onclick="deleteCurrentCurve()">Delete Path</button>
+    <button onclick="exportPath()">Export Path</button>
+    <button onclick="addNewCurve()">Add New Bezier Curve</button>
+    <button onclick="deleteLastSection()">Delete Last Section</button>
+  </div>
+  
+  <!-- SCRIPT_PLACEHOLDER -->
+</body>
+</html>
