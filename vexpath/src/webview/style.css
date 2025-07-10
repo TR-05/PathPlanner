@@ -19,49 +19,67 @@ body {
   padding: 1vh 2vw;
   background-color: var(--main-primary);
   color: var(--main-accent);
-  height: 100vh;
+  min-height: 100vh;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
+  align-items: stretch;
+  overflow-y: auto;
 }
 h1 {
   color: var(--main-accent);
   font-size: clamp(1em, 2vw, 2em); /* Responsive with min and max limits */
   margin: 0vh 0;
   font-weight: 300;
+  text-align: center;
 }
 p {
   color: var(--main-accent);
   font-size: clamp(1em, 2.5vw, 1.5em); /* Responsive with min and max limits */
   margin: 1vh 0;
+  text-align: center;
 }
 img {
   display: none; /* Hide the original img since we'll use canvas */
 }
 canvas {
-  border: 1px solid #0e0e0e;
   box-sizing: border-box;
   cursor: crosshair;
   margin: 2vh 0;
-  max-width: 85vw;
-  max-height: 85vh;
+  display: block;
 }
 .canvas-container {
   position: relative;
-  display: inline-block;
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.canvas-overlay {
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.canvas-overlay > * {
+  pointer-events: none;
 }
 
 #coordinates {
-  position: absolute;
-  top: 96.5%;
-  left: 0;
   font-family: 'Valorant', monospace;
-  font-size: clamp(1em, 2.5vw, 1.5em); /* Same responsive sizing as paragraphs */
+  font-size: clamp(0.9em, 2vw, 1.2em);
   margin: 0;
   color: var(--main-accent);
   white-space: nowrap;
+  background-color: rgba(31, 31, 31, 0.8);
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid var(--main-accent);
+  line-height: 1.2;
+  pointer-events: none;
 }
 #coordinates .coord-numbers {
   font-family: 'Arial', Arial, sans-serif, monospace;
@@ -69,19 +87,38 @@ canvas {
   letter-spacing: 0.03em;
 }
 .controls {
-  margin: 0vh 0;
+  margin: 2vh 0 0 0;
+  text-align: center;
+  background-color: var(--main-primary);
+  padding: 15px;
+  border-radius: 6px;
+  border: 1px solid var(--main-accent);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.controls .curve-management,
+.controls .path-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 button {
-  margin: 0 1vw;
-  padding: 0vh 2vw;
-  font-size: clamp(0.8em, 2vw, 1em);
+  margin: 0;
+  padding: 6px 12px;
+  font-size: clamp(0.7em, 1.5vw, 0.9em);
   font-family: 'Inter', 'Roboto', monospace;
   background-color: var(--main-primary);
   color: var(--main-accent);
-  border: 2px solid var(--main-accent);
+  border: 1px solid var(--main-accent);
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s ease;
+  white-space: nowrap;
 }
 button:hover {
   background-color: var(--main-accent);
@@ -91,7 +128,28 @@ button:hover {
   h1 { font-size: 8vw; }
   p { font-size: 4vw; }
   img { width: 80vw; }
-  button { padding: 2vh 3vw; }
+  button { 
+    padding: 4px 8px; 
+    font-size: 0.8em;
+  }
+  .canvas-overlay {
+    top: 15px;
+    left: 5px;
+  }
+  .controls {
+    padding: 12px;
+    margin: 1vh 0 0 0;
+    gap: 10px;
+  }
+  .controls .curve-management,
+  .controls .path-actions {
+    gap: 6px;
+    justify-content: center;
+  }
+  #coordinates {
+    font-size: 0.8em;
+    padding: 6px;
+  }
 }
 
 /* For very large screens */

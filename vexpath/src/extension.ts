@@ -12,8 +12,11 @@ function getWebviewContent(context: vscode.ExtensionContext, panel: vscode.Webvi
   const styleUri = panel.webview.asWebviewUri(
     vscode.Uri.file(path.join(context.extensionPath, 'src', 'webview', 'style.css'))
   );
-  const scriptUri = panel.webview.asWebviewUri(
-    vscode.Uri.file(path.join(context.extensionPath, 'src', 'webview', 'script.js'))
+  const bezierScriptUri = panel.webview.asWebviewUri(
+    vscode.Uri.file(path.join(context.extensionPath, 'src', 'webview', 'bezier.js'))
+  );
+  const rendererScriptUri = panel.webview.asWebviewUri(
+    vscode.Uri.file(path.join(context.extensionPath, 'src', 'webview', 'renderer.js'))
   );
 
   const imageUri = panel.webview.asWebviewUri(
@@ -22,7 +25,7 @@ function getWebviewContent(context: vscode.ExtensionContext, panel: vscode.Webvi
   html = html.replace('<!-- IMAGE_PLACEHOLDER -->', imageUri.toString());
 
   html = html.replace('<!-- STYLE_PLACEHOLDER -->', `<link rel="stylesheet" href="${styleUri}">`);
-  html = html.replace('<!-- SCRIPT_PLACEHOLDER -->', `<script src="${scriptUri}"></script>`);
+  html = html.replace('<!-- SCRIPT_PLACEHOLDER -->', `<script src="${bezierScriptUri}"></script><script src="${rendererScriptUri}"></script>`);
   html = html.replace('<!-- LINE_PLACEHOLDER -->', `Line ${line} clicked!`);
 
   return html;

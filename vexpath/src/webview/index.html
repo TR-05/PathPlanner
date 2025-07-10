@@ -6,22 +6,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Shantell+Sans:wght@400;700&display=swap" rel="stylesheet">
   <!-- STYLE_PLACEHOLDER -->
 </head>
-<body>
-  <h1>TNTN Path Planner</h1>
-  
+<body>  
   <div class="canvas-container">
-    <canvas id="pathCanvas" width="2000" height="2000"></canvas>
+    <canvas id="pathCanvas"></canvas>
     <img id="backgroundImage" src="<!-- IMAGE_PLACEHOLDER -->" alt="VURC Push Back Field" style="display: none;">
-    <div id="coordinates">
-      Coordinates: (0, 0)
+    <div class="canvas-overlay">
+      <div id="coordinates">
+        Coordinates: (0, 0)
+      </div>
     </div>
   </div>
   
   <div class="controls">
-    <button onclick="deleteCurrentCurve()">Delete Path</button>
-    <button onclick="exportPath()">Export Path</button>
-    <button onclick="addNewCurve()">Add New Bezier Curve</button>
-    <button onclick="deleteLastSection()">Delete Last Section</button>
+    <div class="curve-management">
+      <button onclick="addNewCurve()">Add New Path (N)</button>
+      <button onclick="addPathSegment()">Add Segment (S)</button>
+      <button onclick="deleteCurrentCurve()">Delete Current Path (Del)</button>
+      <button onclick="deleteLastSection()">Delete Last Section (X)</button>
+    </div>
+    <div class="path-actions">
+      <button onclick="exportPath()">Export Path</button>
+      <button onclick="clearCanvas()">Clear All</button>
+    </div>
   </div>
   
   <!-- SCRIPT_PLACEHOLDER -->
